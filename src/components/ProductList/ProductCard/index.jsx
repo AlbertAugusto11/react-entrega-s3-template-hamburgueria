@@ -1,12 +1,12 @@
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ element,addCartList }) => {
     return(
         <li>
-            <img src={product.img} alt={product.name} />
+            <img src={element.img} alt={element.name} />
             <div>
-                <h3>{product.name}</h3>
-                <span>{product.category}</span>
-                <span>{product.price.toLocaleString('pt-BR', { style: "currency", currency: "BRL"})}</span>
-                <button>Adicionar</button>
+                <h3>{element.name}</h3>
+                <span>{element.category}</span>
+                <span>{element.price.toLocaleString('pt-BR', { style: "currency", currency: "BRL"})}</span>
+                <button onClick={() => addCartList(element)}>Adicionar</button>
             </div>
         </li>
     )
