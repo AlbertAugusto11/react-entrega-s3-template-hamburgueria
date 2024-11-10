@@ -1,0 +1,30 @@
+ul{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-left: 2rem;
+}
+
+@media (max-width:679px) {
+    ul{
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        list-style: none;
+        gap: 2rem;
+        margin-top: 2rem;
+        padding-left: 2rem;
+        justify-content: center;
+    }
+}
+@media (max-width:548px) {
+    li{
+        width: 18.75rem;
+        height: 21.875rem;
+        display: flex;
+        flex-direction: column;
+    }
+}

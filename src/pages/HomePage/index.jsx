@@ -6,23 +6,35 @@ import { apiHamburgueria } from "../../service/api";
 
 export const HomePage = () => {
    const [productList, setProductList] = useState([]);
-   const [cartList, setCartList] = useState([]);
+   const [cartList, setCartList] = useState(() => {
+      const loadingCartList = localStorage.getItem("@CartList");
+      return loadingCartList ? JSON.parse(loadingCartList) : [];   
+   });
+   const [isOpen,setIsOpen] = useState(false)
 
    const addCartList = (x) =>{
-      setCartList([...cartList,x])
-      console.log(cartList)
+      let y = [...cartList,x]
+      let yId2 = y.map(element => ({
+         ...element,id2: crypto.randomUUID()
+      }))
+      setCartList(yId2)  // usado para remover somente um elemento repetido do carrinho
    }
    const dellCartList = (x) =>{
       let y = cartList.filter(element =>{
-         return element.name != x.name
+         return element.id2 != x.id2
       })
       setCartList(y)
    }
    const dellAllCartList = () =>{
       setCartList([])
+   }
+   const filterProducts = (item) =>{
+      let x = productList.filter(element =>{
+         return element.name.toLowerCase() == item.toLowerCase()
+      })
+      setProductList(x)
    } 
 
-   // useEffect montagem - carrega os produtos da API e joga em productList
    useEffect(() =>{
       const loadProducts = async () =>{
          try{
@@ -35,19 +47,20 @@ export const HomePage = () => {
       loadProducts()
    },[])
 
+   useEffect(() =>{
+      localStorage.setItem("@CartList", JSON.stringify(cartList))
+    },[cartList])
 
-   // useEffect atualização - salva os produtos no localStorage (carregar no estado)
-   // adição, exclusão, e exclusão geral do carrinho
    // renderizações condições e o estado para exibir ou não o carrinho
    // filtro de busca
    // estilizar tudo com sass de forma responsiva
 
    return (
       <>
-         <Header />
+         <Header filterProducts={filterProducts} cartList={cartList} setIsOpen={setIsOpen}/>
          <main>
             <ProductList productList={productList} addCartList={addCartList}/>
-            <CartModal cartList={cartList} dellCartList={dellCartList} dellAllCartList={dellAllCartList}/>
+            {isOpen ? <CartModal cartList={cartList} dellCartList={dellCartList} dellAllCartList={dellAllCartList} setIsOpen={setIsOpen}/> : null}
          </main>
       </>
    );

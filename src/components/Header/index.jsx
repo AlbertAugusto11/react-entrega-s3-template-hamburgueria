@@ -3,7 +3,7 @@ import Logo from "../../assets/Logo.svg";
 import { MdSearch, MdShoppingCart } from "react-icons/md";
 import "../Header/index.scss"
 
-export const Header = () => {
+export const Header = ({filterProducts,cartList,setIsOpen}) => {
    const [value, setValue] = useState("");
 
    return (
@@ -17,13 +17,13 @@ export const Header = () => {
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
                />
-               <button type="submit">
+               <button type="button" onClick={() => filterProducts(value)}>
                  <MdSearch size={21} />
                </button>
             </form>
-            <button>
+            <button type="button" onClick={() => setIsOpen(true)}>
                 <MdShoppingCart size={21} />
-                <span>0</span>
+                <span>{cartList.length}</span>
             </button>
          </div>
       </header>

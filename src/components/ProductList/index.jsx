@@ -1,4 +1,5 @@
 import { ProductCard } from "./ProductCard";
+import "./index.scss"
 
 export const ProductList = ({ productList,addCartList }) => {
    return (

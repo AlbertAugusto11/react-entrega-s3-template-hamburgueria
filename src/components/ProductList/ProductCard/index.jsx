@@ -1,3 +1,5 @@
+import "./index.scss"
+
 export const ProductCard = ({ element,addCartList }) => {
     return(
         <li>
@@ -5,7 +7,7 @@ export const ProductCard = ({ element,addCartList }) => {
             <div>
                 <h3>{element.name}</h3>
                 <span>{element.category}</span>
-                <span>{element.price.toLocaleString('pt-BR', { style: "currency", currency: "BRL"})}</span>
+                <span className="span__price">{element.price.toLocaleString('pt-BR', { style: "currency", currency: "BRL"})}</span>
                 <button onClick={() => addCartList(element)}>Adicionar</button>
             </div>
         </li>
