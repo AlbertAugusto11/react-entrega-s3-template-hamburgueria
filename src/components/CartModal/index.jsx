@@ -17,7 +17,7 @@ export const CartModal = ({cartList,dellCartList,dellAllCartList, setIsOpen }) =
                </button>
             </div>
             <div className="div__list">
-               <ul>
+               <ul className="div__ul">
                   {cartList.map((product) => (
                      <CartItemCard key={crypto.randomUUID()} product={product} dellCartList={dellCartList}/>
                   ))}

@@ -6,6 +6,7 @@ ul{
     gap: 2rem;
     margin-top: 2rem;
     padding-left: 2rem;
+    justify-content: center;
 }
 
 @media (max-width:679px) {
@@ -16,7 +17,7 @@ ul{
         list-style: none;
         gap: 2rem;
         margin-top: 2rem;
-        padding-left: 2rem;
+        padding-left: 0rem;
         justify-content: center;
     }
 }
