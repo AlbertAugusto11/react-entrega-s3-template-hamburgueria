@@ -21,7 +21,7 @@ export const Header = ({filterProducts,cartList,setIsOpen}) => {
                   filterProducts(value)
                   setInterval(() =>{
                      window.location.reload()
-                  },10000) 
+                  },7000) 
                }}>
                  <MdSearch size={21} />
                </button>
