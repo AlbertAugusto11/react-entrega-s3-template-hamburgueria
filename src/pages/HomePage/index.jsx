@@ -30,10 +30,15 @@ export const HomePage = () => {
    }
    const filterProducts = (item) =>{
       let x = productList.filter(element =>{
-         return element.name.toLowerCase() == item.toLowerCase()
+         return element.name.toLowerCase().includes(item.toLowerCase())
       })
+      if(x.length > 0){
       setProductList(x)
-   } 
+      }else{
+         alert("Produto não Encontrado")
+         window.location.reload()
+      }
+   }
 
    useEffect(() =>{
       const loadProducts = async () =>{
@@ -51,10 +56,7 @@ export const HomePage = () => {
       localStorage.setItem("@CartList", JSON.stringify(cartList))
     },[cartList])
 
-   // renderizações condições e o estado para exibir ou não o carrinho
-   // filtro de busca
-   // estilizar tudo com sass de forma responsiva
-
+   
    return (
       <>
          <Header filterProducts={filterProducts} cartList={cartList} setIsOpen={setIsOpen}/>

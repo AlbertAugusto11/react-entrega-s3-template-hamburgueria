@@ -24,7 +24,7 @@ header{
                 width: 180px;
                 height: 30px;
                 align-self: center;
-                border: 1px solid black;
+                border: 2px solid black;
                 border-radius: 8px;
                 text-align: center;
                 font-weight: bolder;
@@ -52,13 +52,9 @@ header{
     }
 }
 
-@media (max-width: 679px) {
+@media (max-width: 600px) {
     header{
         width: 100%;
-        img{
-            width: 9.5rem;
-            height: 2.5rem;
-        }
         .div__header{
             form{
                 display: none;

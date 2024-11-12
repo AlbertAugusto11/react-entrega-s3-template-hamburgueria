@@ -17,7 +17,12 @@ export const Header = ({filterProducts,cartList,setIsOpen}) => {
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
                />
-               <button type="button" onClick={() => filterProducts(value)}>
+               <button type="button" onClick={() => {
+                  filterProducts(value)
+                  setInterval(() =>{
+                     window.location.reload()
+                  },10000) 
+               }}>
                  <MdSearch size={21} />
                </button>
             </form>
