@@ -1,6 +1,6 @@
 import "./index.scss"
 
-export const ProductCard = ({ element,addCartList }) => {
+export const ProductCard = ({ element, addCartList }) => {
     return(
         <li>
             <img src={element.img} alt={element.name} />
